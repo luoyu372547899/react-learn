@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>2_使用jsx创建虚拟dom</title>
 </head>
 <body>
     <div id="test"></div>
     <script src="../js/react.development.js"></script>
     <script src="../js/react-dom.development.js"></script>
-    <script src="../js/prop-types.js"></script>
 
-    <script type="text/babel">
-        const VDOM = <h1>Hello React</h1>;
+    <script type="text/javascript">
+        const VDOM = React.createElement('h1',{id:'title'},'Hello React');
         ReactDOM.render(VDOM, document.getElementById('test'))
     </script>
 </body>
