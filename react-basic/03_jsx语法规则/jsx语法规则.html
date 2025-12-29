@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jsx语法规则</title>
+    <style>
+        .title {
+            background-color: aqua;
+            width: 200px;
+        }
+    </style>
 </head>
+
 <body>
     <div id="test"></div>
     <script src="../js/react.development.js"></script>
@@ -13,8 +21,19 @@
     <script src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-        const VDOM = <h1>Hello React</h1>;
+        const myId = 'atguigu';
+        const myData = 'Hello React';
+        const VDOM = (
+            <div>
+                <h2 className='title' id={myId}>
+                    <span style={{ color: 'white', fontSize: '20px' }}>{myData}</span>
+                </h2>
+                <input type="text" />
+            </div>
+
+        );
         ReactDOM.render(VDOM, document.getElementById('test'))
     </script>
 </body>
+
 </html>
