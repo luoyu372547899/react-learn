@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件的生命周期</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = {
+                opacity: 1
+            }
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+            }
+            componentDidMount() {
+
+                console.log('componentDidMount');
+                this.timer = setInterval(() => {
+                    let opacity = this.state.opacity - 0.1;
+                    if (opacity <= 0) opacity = 1;
+                    this.setState({ opacity });
+                }, 200);
+            }
+            componentWillUnmount() {
+                clearInterval(this.timer);
+            }
+            render() {
+                return (
+                    <div>
+                        <h2 style={{ opacity: this.state.opacity }}>学不会react怎么办</h2>
+                        <button onClick={this.death}>不活了</button>
+                    </div>
+
+                );
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
