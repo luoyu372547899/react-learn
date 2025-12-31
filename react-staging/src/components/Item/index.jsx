@@ -12,14 +12,20 @@ export default class Item extends React.Component {
             this.props.updateToDo(id, event.target.checked);
         }
     }
+    handleDelete = (id)=>{
+        return ()=>{
+            this.props.deleteToDo(id);
+        }
+    }
     render() {
-        const { todo, updateToDo } = this.props
+        const { todo } = this.props
         const {mouse} = this.state
         return (
             <li style={{backgroundColor: mouse ? '#f5f5f5' : 'transparent'}} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
-                <input type="checkbox" defaultChecked={todo.done} onChange={this.handleCheck(todo.id)} />
+                {/* 使用 checked 使其成为受控组件，确保状态同步 */}
+                <input type="checkbox" checked={todo.done} onChange={this.handleCheck(todo.id)} />
                 <span>{todo.name}</span>
-                <button style={{display: mouse ? 'inline' : 'none'}}>删除</button>
+                <button onClick={this.handleDelete(todo.id)} style={{display: mouse ? 'inline' : 'none'}}>删除</button>
             </li>
         )
     }
