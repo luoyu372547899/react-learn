@@ -2,7 +2,7 @@
  * @author Leixm
  * 为 Count 组件生成 action 对象
  */
-import { INCREMENT, DECREMENT } from "./constant";
+import { INCREMENT, DECREMENT } from "../constant";
 
 export const createIncrementAction = (data) => {
     return { type: INCREMENT, data }

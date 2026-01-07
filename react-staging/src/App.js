@@ -3,12 +3,18 @@
  * App 根组件：仅保留 minimal 代码以验证 antd 安装
  */
 import React, { Component } from 'react';
-import Count from './components/Count'
+import Count from './containers/Count'
+import store from './redux/store'
+
+import Person from './containers/Person'
 export default class App extends Component {
  
   render() {
     return (
-      <Count />
+      <div>
+        <Count store={store} />
+        <Person />
+      </div>
     )
   }
 }
